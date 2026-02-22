@@ -6,9 +6,14 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-  origin: "https://employee-management-system-pi-two.vercel.app/",
+  origin: [
+    "http://localhost:5173",
+    "https://employee-management-system-pi-two.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', require('./routes/authRoutes'));
