@@ -1,4 +1,4 @@
-# IDMS – Employee Management Module (MERN Stack)
+# Employee Management Module (MERN Stack)
 
 ## 🚀 Project Overview
 
@@ -196,3 +196,4 @@ Password: 123456
  - ✔ Search & Filter via Query Params  
  - ✔ Professional Folder Structure  
  - ✔ Error Handling  
+
