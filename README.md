@@ -182,7 +182,7 @@ Password: 123456
 ## 🎥 Submission Details
 
  - GitHub Repository: (https://github.com/abhishekjha193/Employee-management-system)
- - Screen Recording: ()
+ - Screen Recording: (https://drive.google.com/file/d/1Fvil_AOoXUDcBVIqKClWsbI2FFs5htsM/view?usp=sharing)
 
 ---
 
