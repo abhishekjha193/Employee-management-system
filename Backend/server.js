@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-  origin: "https://your-vercel-url.vercel.app",
+  origin: "https://employee-management-system-pi-two.vercel.app/",
   credentials: true
 }));
 app.use(express.json());
