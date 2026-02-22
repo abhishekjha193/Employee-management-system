@@ -21,7 +21,7 @@ function Sidebar() {
       {menuItems.map((item, index) => (
         <div key={index} className="sidebar-item">
           <img
-            src={`/assets/${item.icon}.svg`}
+            src={`/Assets/${item.icon}.svg`}
             alt={item.name}
           />
           <span>{item.name}</span>
