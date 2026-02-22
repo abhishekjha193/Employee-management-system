@@ -41,7 +41,7 @@ function Login() {
       <div className="login-card">
         
         <img
-          src="/Assets/idms_logo.svg"
+          src="/assets/idms_logo.svg"
           alt="IDMS Logo"
           className="logo"
         />
