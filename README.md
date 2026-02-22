@@ -122,22 +122,22 @@ Filter by:
  - ├── Backend
  - │ ├── controllers
  - │ ├── models
- │ ├── routes
- │ ├── middleware
- │ ├── uploads
- │ ├── server.js
- │ └── .env
- │
- ├── Frontend
- │ ├── src
- │ │ ├── components
- │ │ ├── pages
- │ │ ├── services
- │ │ ├── css
- │ │ └── main.jsx
- │ └── vite.config.js
- │
- └── README.md
+ - │ ├── routes
+ - │ ├── middleware
+ - │ ├── uploads
+ - │ ├── server.js
+ - │ └── .env
+ - │
+ - ├── Frontend
+ - │ ├── src
+ - │ │ ├── components
+ - │ │ ├── pages
+ - │ │ ├── services
+ - │ │ ├── css
+ - │ │ └── main.jsx
+ - │ └── vite.config.js
+ - │
+ - └── README.md
 
  - ## ⚙️ Installation & Setup
 
@@ -181,7 +181,7 @@ Password: 123456
 
 ## 🎥 Submission Details
 
- - GitHub Repository: ()
+ - GitHub Repository: (https://github.com/abhishekjha193/Employee-management-system)
  - Screen Recording: ()
 
 ---
