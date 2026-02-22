@@ -13,7 +13,7 @@ function Header({ toggleSidebar }) {
 
       <div className="left-header">
         <img
-          src="/Assets/idms_logo.svg"
+          src="/assets/idms_logo.svg"
           alt="Logo"
           className="header-logo"
         />
@@ -26,7 +26,7 @@ function Header({ toggleSidebar }) {
         </button>
 
         <img
-          src="/Assets/user_avatar.svg"
+          src="/assets/user_avatar.svg"
           alt="User"
           className="user-icon"
         />

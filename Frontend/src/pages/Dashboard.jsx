@@ -46,7 +46,7 @@ function Dashboard() {
       <div className="table-wrapper">
         {employees.length === 0 ? (
           <div className="empty-area">
-            <img src="/Assets/no_records.png" alt="no data" />
+            <img src="/assets/no_records.png" alt="no data" />
             <p>No Records to be displayed</p>
           </div>
         ) : (
@@ -78,7 +78,7 @@ function Dashboard() {
 
                   <td>
                     <img
-                      src="/Assets/photo.svg"
+                      src="/assets/photo.svg"
                       alt="clip"
                       className="photo-icon"
                     />
@@ -86,7 +86,7 @@ function Dashboard() {
 
                   <td>
                     <img
-                      src="/Assets/action.svg"
+                      src="/assets/action.svg"
                       alt="action"
                       className="action-icon"
                     />
