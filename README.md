@@ -117,27 +117,27 @@ Filter by:
 ---
 
 ## 📁 Folder Structure
- - Employee-Management-System
- - │
- - ├── Backend
- - │ ├── controllers
- - │ ├── models
- - │ ├── routes
- - │ ├── middleware
- - │ ├── uploads
- - │ ├── server.js
- - │ └── .env
- - │
- - ├── Frontend
- - │ ├── src
- - │ │ ├── components
- - │ │ ├── pages
- - │ │ ├── services
- - │ │ ├── css
- - │ │ └── main.jsx
- - │ └── vite.config.js
- - │
- - └── README.md
+ Employee-Management-System
+ │
+ ├── Backend
+ │ ├── controllers
+ │ ├── models
+ │ ├── routes
+ │ ├── middleware
+ │ ├── uploads
+ │ ├── server.js
+ │ └── .env
+ │
+ ├── Frontend
+ │ ├── src
+ │ │ ├── components
+ │ │ ├── pages
+ │ │ ├── services
+ │ │ ├── css
+ │ │ └── main.jsx
+ │ └── vite.config.js
+ │
+ └── README.md
 
  - ## ⚙️ Installation & Setup
 
