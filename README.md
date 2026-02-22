@@ -117,11 +117,11 @@ Filter by:
 ---
 
 ## 📁 Folder Structure
- Employee-Management-System
- │
- ├── Backend
- │ ├── controllers
- │ ├── models
+ - Employee-Management-System
+ - │
+ - ├── Backend
+ - │ ├── controllers
+ - │ ├── models
  │ ├── routes
  │ ├── middleware
  │ ├── uploads
