@@ -33,6 +33,23 @@ function Dashboard() {
     }
   };
 
+  const calculateAge = (dob) => {
+    const birthDate = new Date(dob);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+
+    return age;
+  };
+
   return (
     <Layout>
       <div className="dashboard-container">
@@ -83,6 +100,7 @@ function Dashboard() {
                 <th>Date of Birth</th>
                 <th>Department</th>
                 <th>Designation</th>
+                <th>Age</th>
                 <th>Photo</th>
                 <th>Action</th>
               </tr>
@@ -111,7 +129,7 @@ function Dashboard() {
                     <td>{emp.dob?.substring(0, 10)}</td>
                     <td>{emp.department}</td>
                     <td>{emp.designation}</td>
-                    <td>{emp.age}</td>
+                    <td>{calculateAge(emp.dob)}</td>
                     <td>
                       <a
                         href={`http://localhost:5000/${emp.photo}`}
