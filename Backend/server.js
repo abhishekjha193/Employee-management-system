@@ -4,8 +4,6 @@ const dotenv = require("dotenv");
 const path = require("path");
 
 const connectDB = require("./config/db");
-
-// Route files
 const authRoutes = require("./routes/authRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
 
@@ -25,7 +23,7 @@ app.use("/api/employees", employeeRoutes);
 
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.get((req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
