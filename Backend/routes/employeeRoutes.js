@@ -1,15 +1,30 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const verifyToken = require('../middleware/authMiddleware');
-const upload = require('../middleware/uploadMiddleware');
+const protect = require("../middleware/authMiddleware");
+const {
+  createEmployee,
+  getEmployees,
+  deleteEmployee,
+} = require("../controllers/employeeController");
 
+const multer = require("multer");
 
-const { createEmployee, getEmployees, softDeleteEmployee } = require('../controllers/employeeController');
+// Multer Storage Setup
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
 
-router.post('/', verifyToken, upload.single('photo'), createEmployee);
-router.get('/', verifyToken, getEmployees);
-router.put('/:id/deactivate', verifyToken, softDeleteEmployee);
+const upload = multer({ storage });
 
+// Routes
+router.post("/", protect, upload.single("photo"), createEmployee);
+
+router.get("/", protect, getEmployees);
 
 module.exports = router;

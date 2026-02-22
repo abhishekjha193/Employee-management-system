@@ -1,73 +1,76 @@
-.login-wrapper {
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.login-container {
   height: 100vh;
+  background: linear-gradient(to bottom left, #4f79b6 50%, #f2f2f2 50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(200deg,  #4f77b3  50%, #f3f3f3 50%);
 }
 
 .login-card {
-  width: 420px;
-  background: #f3f3f3;
-  padding: 40px;
+  width: 300px;
+  background: #ffffff;
+  padding: 35px;
   border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  border: 2px solid #ff3fa4;
-  display: flex;
-  flex-direction: column;
-}
-
-.login-card img{
-  height: 40px;
-}
-
-.login-title {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
   text-align: center;
-  font-size: 40px;
-  font-weight: 700;
-  color: #ff00aa;
+  border: 1px solid #ff2fa0;
+}
+
+.logo {
+  width: 120px;
   margin-bottom: 10px;
 }
 
-.login-subtitle {
-  text-align: center;
-  color: #ff00aa;
-  margin-bottom: 30px;
-}
-
-.login-input-group {
+.login-card h3 {
+  color: #ff2fa0;
   margin-bottom: 20px;
 }
 
-.login-input-group label {
+.login-card label {
   display: block;
-  margin-bottom: 6px;
-  color: #4f77b3;
-  font-weight: 500;
-}
-
-.login-input-group input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  text-align: left;
+  margin-top: 10px;
   font-size: 14px;
 }
 
-.login-options {
+.login-card input[type="email"],
+.login-card input[type="password"],
+.login-card input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.options {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size: 13px;
 }
 
-.login-btn {
+.login-card button {
   width: 100%;
-  padding: 12px;
-  background-color: #4f77b3;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #4f79b6;
+  color: #fff;
   border: none;
-  color: white;
-  font-size: 16px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.login-card button:hover {
+  background-color: #3a5f94;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
 }

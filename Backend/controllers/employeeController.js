@@ -3,67 +3,64 @@ const Employee = require("../models/Employee");
 // create
 exports.createEmployee = async (req, res) => {
   try {
-    const { fullName, dob, email, phone, department, designation, gender } =
-      req.body;
+    const {
+      fullName,
+      dob,
+      email,
+      department,
+      phone,
+      gender,
+      designation,
+    } = req.body;
 
-    if (
-      !fullName ||
-      !dob ||
-      !email ||
-      !phone ||
-      !department ||
-      !designation ||
-      !gender
-    ) {
+    //Backend 
+    if (!fullName || !dob || !email || !department || !phone || !gender || !designation) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    //email validation
+
+    //Email format check
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ message: "Invalid email format" });
     }
-    //phone validation
+
+    //Phone must be 10 digits
     if (!/^\d{10}$/.test(phone)) {
-      return res
-        .status(400)
-        .json({ message: "Phone must be exactly 10 digits" });
-    }
-    //Check email
-    const existingEmployee = await Employee.findOne({ email });
-    if (existingEmployee) {
-      return res
-        .status(400)
-        .json({ message: "Employee with this email already exists" });
+      return res.status(400).json({ message: "Phone must be 10 digits" });
     }
 
-    const newEmployee = new Employee({
+    const employee = new Employee({
       fullName,
       dob,
       email,
-      phone,
       department,
-      designation,
+      phone,
       gender,
+      designation,
       photo: req.file ? req.file.path : "",
     });
 
-    await newEmployee.save();
+    await employee.save();
 
-    res.status(201).json({ message: "Employee created successfully" });
+    res.status(201).json({
+      message: "Employee created successfully",
+      employee,
+    });
+
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-//get employee
+
+
+//(Search + Filter)
 exports.getEmployees = async (req, res) => {
   try {
     const { search, department, designation, gender } = req.query;
 
     let query = {};
 
-    // 🔎 Search (Name, Email, Department)
     if (search) {
       query.$or = [
         { fullName: { $regex: search, $options: "i" } },
@@ -72,40 +69,24 @@ exports.getEmployees = async (req, res) => {
       ];
     }
 
-    // 🎯 Filters
-    if (department) query.department = department;
-    if (designation) query.designation = designation;
-    if (gender) query.gender = gender;
+    if (department) {
+      query.department = department;
+    }
 
-    const employees = await Employee.find(query);
+    if (designation) {
+      query.designation = designation;
+    }
 
-    res.json({
-      totalRecords: employees.length,
-      data: employees,
-    });
+    if (gender) {
+      query.gender = gender;
+    }
+
+    const employees = await Employee.find(query).sort({ createdAt: -1 });
+
+    res.status(200).json(employees);
 
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 };
-
-//delete employee
-exports.softDeleteEmployee = async (req, res) => {
-  try {
-    const employee = await Employee.findByIdAndUpdate(
-      req.params.id,
-      { isActive: false },
-      { new: true },
-    );
-
-    if (!employee) {
-      return res.status(404).json({ message: "Employee not found" });
-    }
-
-    res.json({ message: "Employee deactivated successfully" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 

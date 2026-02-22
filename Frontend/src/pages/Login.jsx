@@ -1,73 +1,98 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "../css/Login.css";
 import API from "../services/api";
+import "../css/login.css";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     try {
-      const res = await API.post("/auth/login", {
-        email,
-        password,
-      });
+      const res = await API.post("/auth/login", formData);
 
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
+
     } catch (err) {
-      alert("Invalid credentials");
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="login-container">
       <div className="login-card">
-        <img src="/Assets/idms_logo.svg" alt="logo" />
-        <div className="login-title"></div>
-        <div className="login-subtitle">Welcome to HR Admin Panel</div>
+        
+        <img
+          src="/Assets/idms_logo.svg"
+          alt="IDMS Logo"
+          className="logo"
+        />
 
-        <form onSubmit={handleLogin}>
-          <div className="login-input-group">
-            <label>User Name</label>
-            <input
-              type="email"
-              placeholder="Enter User Name"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+        <h3>Welcome to HR Admin Panel</h3>
 
-          <div className="login-input-group">
-            <label>Enter Password</label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+        {error && <p className="error">{error}</p>}
 
-          <div className="login-options">
+        <form onSubmit={handleSubmit}>
+          
+          <label>User Name</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter User Name"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+
+          <label>Enter Password</label>
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Enter Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+
+          <div className="options">
             <div>
-              <input type="checkbox" /> Show Password
+              <input
+                type="checkbox"
+                onChange={() => setShowPassword(!showPassword)}
+              />
+              <span> Show Password</span>
             </div>
+
             <div>
-              <input type="checkbox" /> Remember Me
+              <input type="checkbox" />
+              <span> Remember Me</span>
             </div>
           </div>
 
-          <button type="submit" className="login-btn">
-            Login
-          </button>
+          <button type="submit">Login</button>
+
         </form>
       </div>
     </div>
   );
 }
+
 export default Login;

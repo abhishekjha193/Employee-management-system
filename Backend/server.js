@@ -1,36 +1,36 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const path = require("path");
+
+const connectDB = require("./config/db");
+
+// Route files
+const authRoutes = require("./routes/authRoutes");
+const employeeRoutes = require("./routes/employeeRoutes");
+
+dotenv.config();
+connectDB();
 
 const app = express();
 
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://employee-management-system-h4zi5zb28.vercel.app/"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
-
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/employees', require('./routes/employeeRoutes'));
+app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('API running');
+// Serve uploaded images
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.use("/api/auth", authRoutes);
+app.use("/api/employees", employeeRoutes);
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get((req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 5000;
 
-//database connect
-mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-  console.log('MongoDB connected');
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-})
-.catch((err) => console.log(err));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

@@ -1,19 +1,19 @@
-import Sidebar from "./Sidebar";
 import Header from "./Header";
-import '../css/Layout.css'
+import Sidebar from "./Sidebar";
+import "../css/dashboard.css";
 
 function Layout({ children }) {
   return (
-    <div className="app-container">
-      <Sidebar />
-      <div className="main-section">
-        <Header />
+    <div className="layout">
+      <Header />
+      <div className="body">
+        <Sidebar />
         <div className="content">
           {children}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
