@@ -83,7 +83,6 @@ function Dashboard() {
                 <th>Date of Birth</th>
                 <th>Department</th>
                 <th>Designation</th>
-                <th>Age</th>
                 <th>Photo</th>
                 <th>Action</th>
               </tr>

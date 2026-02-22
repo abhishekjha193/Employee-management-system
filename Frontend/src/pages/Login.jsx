@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/Login.css";
+import API from "../services/api";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await API.post("/auth/login", {
         email,
         password,
       });
@@ -27,7 +28,7 @@ function Login() {
   return (
     <div className="login-wrapper">
       <div className="login-card">
-        <img src="/Assets/idms_logo.svg" alt="logo"/>
+        <img src="/Assets/idms_logo.svg" alt="logo" />
         <div className="login-title"></div>
         <div className="login-subtitle">Welcome to HR Admin Panel</div>
 
@@ -65,7 +66,6 @@ function Login() {
             Login
           </button>
         </form>
-        
       </div>
     </div>
   );
