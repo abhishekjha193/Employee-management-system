@@ -1,0 +1,251 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.app-container {
+  display: flex;
+  height: 105vh;
+  background: #f4f6f9;
+}
+
+.sidebar {
+  width: 230px;
+  background: #f7f8fb;
+  border-right: 1px solid #d5d9e0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 18px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff00aa;
+  border-bottom: 1px solid #d5d9e0;
+}
+
+.sidebar-item {
+  padding: 14px 20px;
+  color: #4f77b3;
+  font-size: 15px;
+  border-bottom: 1px solid #eef1f6;
+  cursor: pointer;
+}
+
+.sidebar-item img{
+  height: 15px;
+}
+
+.sidebar-item:hover {
+  background: #e9eef7;
+}
+
+.main-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 87px;
+  background: #f7f8fb;
+  border-bottom: 1px solid #d5d9e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+
+.header-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff00aa;
+}
+
+.profile-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #4f77b3;
+}
+
+.content {
+  padding: 25px;
+  flex: 1;
+}
+
+.sub-header {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #4f77b3;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  width: 260px;
+  padding: 8px 15px;
+  border-radius: 25px;
+  border: 1px solid #4f77b3;
+}
+
+.create-btn {
+  background: #4f77b3;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background: #3d6499;
+}
+
+.empty-box {
+  border: 1px dashed #cfd6e4;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9aa4b2;
+}
+
+.dashboard-container {
+  padding: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.search-input {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+.create-btn {
+  background-color: #4e73df;
+  color: white;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.table-wrapper {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f2f2f2;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+td {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 10px 0;
+}
+
+.page-box {
+  border: 1px solid #aaa;
+  padding: 5px 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 25px;
+  width: 500px;
+  border-radius: 6px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-form input,
+.modal-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cancel-btn {
+  background: red;
+  color: white;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px); /* header height adjust kar sakta hai */
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-wrapper {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #ddd;
+}
