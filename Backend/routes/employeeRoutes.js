@@ -13,11 +13,11 @@ const multer = require("multer");
 // Multer Storage Setup
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../uploads"));
+    cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);
-  }
+  },
 });
 
 const upload = multer({ storage });
@@ -26,6 +26,5 @@ const upload = multer({ storage });
 router.post("/", upload.single("photo"), createEmployee);
 
 router.get("/", protect, getEmployees);
-
 
 module.exports = router;
