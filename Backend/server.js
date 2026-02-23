@@ -3,7 +3,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 const fs = require("fs");
-const path = require("path");
 
 const uploadDir = path.join(__dirname, "uploads");
 
