@@ -48,7 +48,7 @@ exports.createEmployee = async (req, res) => {
       employee,
     });
   } catch (error) {
-    console.log("CREATE ERROR:", error);
+    console.log(error); 
     res.status(500).json({ message: error.message });
   }
 };
