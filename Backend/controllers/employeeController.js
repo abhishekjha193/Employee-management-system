@@ -3,18 +3,19 @@ const Employee = require("../models/Employee");
 // create
 exports.createEmployee = async (req, res) => {
   try {
-    const {
-      fullName,
-      dob,
-      email,
-      department,
-      phone,
-      gender,
-      designation,
-    } = req.body;
+    const { fullName, dob, email, department, phone, gender, designation } =
+      req.body;
 
-    //Backend 
-    if (!fullName || !dob || !email || !department || !phone || !gender || !designation) {
+    //Backend
+    if (
+      !fullName ||
+      !dob ||
+      !email ||
+      !department ||
+      !phone ||
+      !gender ||
+      !designation
+    ) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -37,7 +38,7 @@ exports.createEmployee = async (req, res) => {
       phone,
       gender,
       designation,
-      photo: req.file ? req.file.filename : ""
+      photo: req.file ? req.file.filename : "",
     });
 
     await employee.save();
@@ -46,13 +47,11 @@ exports.createEmployee = async (req, res) => {
       message: "Employee created successfully",
       employee,
     });
-
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    console.log("CREATE ERROR:", error);
+    res.status(500).json({ message: error.message });
   }
 };
-
-
 
 //(Search + Filter)
 exports.getEmployees = async (req, res) => {
@@ -84,9 +83,7 @@ exports.getEmployees = async (req, res) => {
     const employees = await Employee.find(query).sort({ createdAt: -1 });
 
     res.status(200).json(employees);
-
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 };
-
