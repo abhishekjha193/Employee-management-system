@@ -1,5 +1,8 @@
 const Employee = require("../models/Employee");
 
+console.log(req.body);
+console.log(req.file);
+
 // create
 exports.createEmployee = async (req, res) => {
   try {
