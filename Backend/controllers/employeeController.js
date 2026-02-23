@@ -37,7 +37,7 @@ exports.createEmployee = async (req, res) => {
       phone,
       gender,
       designation,
-      photo: req.file ? req.file.path : "",
+      photo: req.file ? req.file.filename : ""
     });
 
     await employee.save();
